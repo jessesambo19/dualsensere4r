@@ -1,0 +1,3 @@
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\Output\DualSenseRE4R.pdb
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\Output\DualSenseRE4R.dll.config
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\Output\DualSenseRE4R.exe

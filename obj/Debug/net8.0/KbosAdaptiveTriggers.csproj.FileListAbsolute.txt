@@ -1,0 +1,39 @@
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\DualSenseRE4R.exe
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\DualSenseRE4R.deps.json
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\DualSenseRE4R.runtimeconfig.json
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\DualSenseRE4R.pdb
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.csproj.AssemblyReference.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.AssemblyInfoInputs.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.AssemblyInfo.cs
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.csproj.CoreCompileInputs.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\KbosAdap.30B12DE0.Up2Date
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\refint\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.pdb
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\DualSenseRE4R.genruntimeconfig.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers\obj\Debug\net8.0\ref\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\DualSenseRE4R.exe
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\DualSenseRE4R.deps.json
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\DualSenseRE4R.runtimeconfig.json
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\DualSenseRE4R.pdb
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.csproj.AssemblyReference.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.AssemblyInfoInputs.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.AssemblyInfo.cs
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.csproj.CoreCompileInputs.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\KbosAdap.30B12DE0.Up2Date
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\refint\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.pdb
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\DualSenseRE4R.genruntimeconfig.cache
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\obj\Debug\net8.0\ref\DualSenseRE4R.dll
+C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\bin\Debug\net8.0\Memory.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\bin\Debug\net8.0\Memory.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\bin\Debug\net8.0\swed64.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\bin\Debug\net8.0\SharpDX.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\bin\Debug\net8.0\SharpDX.DirectInput.dll

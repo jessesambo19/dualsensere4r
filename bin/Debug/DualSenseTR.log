@@ -1,0 +1,80 @@
+[2025-07-02 15:37:08] Unexpected error: [Loop Crash] Value was either too large or too small for a UInt64.
+   at System.Convert.ThrowUInt64OverflowException()
+   at System.Convert.ToUInt64(Int64 value)
+   at Memory.Mem.Get64BitCode(String name, String path, Int32 size)
+   at Memory.Mem.GetCode(String name, String path, Int32 size)
+   at Memory.Mem.ReadFloat(String code, String file, Boolean round)
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\ProgramKBOS.cs:line 170
+[2025-07-03 19:42:15] Unexpected error: [Loop Crash] Value was either too large or too small for a UInt64.
+   at System.Convert.ThrowUInt64OverflowException()
+   at System.Convert.ToUInt64(Int64 value)
+   at Memory.Mem.Get64BitCode(String name, String path, Int32 size)
+   at Memory.Mem.GetCode(String name, String path, Int32 size)
+   at Memory.Mem.ReadFloat(String code, String file, Boolean round)
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\Kena_Adaptive_Triggers - Copy\ProgramKBOS.cs:line 170
+[2026-05-10 19:24:40] Unexpected error: [Loop Crash] Value was either too large or too small for a UInt64.
+   at System.Convert.ThrowUInt64OverflowException()
+   at System.Convert.ToUInt64(Int64 value)
+   at Memory.Mem.Get64BitCode(String name, String path, Int32 size)
+   at Memory.Mem.GetCode(String name, String path, Int32 size)
+   at Memory.Mem.ReadInt(String code, String file)
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 249
+[2026-05-12 23:12:35] Unexpected error: [Loop Crash] Value was either too large or too small for a UInt64.
+   at System.Convert.ThrowUInt64OverflowException()
+   at System.Convert.ToUInt64(Int64 value)
+   at Memory.Mem.Get64BitCode(String name, String path, Int32 size)
+   at Memory.Mem.GetCode(String name, String path, Int32 size)
+   at Memory.Mem.ReadInt(String code, String file)
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R copy.cs:line 267
+[2026-05-20 23:25:48] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 00:56:11] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 00:56:31] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 00:57:01] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.Result.CheckError()
+   at SharpDX.DirectInput.Device.GetDeviceState(Int32 arg0, IntPtr arg1)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 01:05:47] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 01:21:54] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 10:29:07] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 306
+[2026-05-21 11:03:22] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 308
+[2026-05-22 08:19:17] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 308
+[2026-05-22 08:25:22] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\Kena_Adaptive_Triggers\ProgramRE4R.cs:line 308
