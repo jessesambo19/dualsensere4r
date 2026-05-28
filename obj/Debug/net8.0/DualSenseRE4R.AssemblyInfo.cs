@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DualSenseRE4R")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d378902beae10566b7131426cb9582fcec378be0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc319cdfbf5425ac64f07fa6e397ffe2ff70c5c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("DualSenseRE4R")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DualSenseRE4R")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

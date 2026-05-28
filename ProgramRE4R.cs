@@ -249,10 +249,10 @@ namespace DualSenseRE4R
             string pauseStatesPointer = "re4.exe+0DA8F0B0,50,48,18,180,40,48,100"; // Another example for float health
             string pauseStates2Pointer = "re4.exe+0DA4EEB8,98,A8,210,200,230,50,4C"; // Another example for float health
             string pauseStates3Pointer = "re4.exe+0DA4E518,5B0,78,48,4B0,708,38,38"; // Another example for float health
-            string weaponTypePointer = "re4.exe+0DC70CC8,90,30,20,1B0,30,B8,50"; // Another example for float health
+            string weaponTypePointer = "re4.exe+0DC70CC8,60,40,D0,30,20,1A8,50"; // change // Another example for float health
             string boatPointer = "re4.exe+0DA8D5D8,60,78,10,C8,148,18,8"; // Another example for float health
             string gettingOnABoatPointer = "re4.exe+0DA8F0D8,210,1A8,440,130,60,68,DB8"; // Another example for float health
-            string backupAmmoPointer = "re4.exe+0DA8CDD0,88,18,A0,70,B8,80,2C"; // Another example for float health
+            string backupAmmoPointer = "re4.exe+0DA8D590,88,78,A0,70,C0,40,2C"; // Another example for float health
             string grenadeAmmoPointer = "re4.exe+0DA4E9A8,10,10,318,A0,38,F18,10"; // Another example for float health
             string flashbangAmmoPointer = "re4.exe+0DA62250,A8,68,1D8,70,38,ED0,6A0"; // Another example for float health
             string startMenuAndLoadingScreenPointer = "re4.exe+0DE20BA0,68,40,E0,288,A0,1BC"; // Another example for float health
@@ -441,9 +441,9 @@ namespace DualSenseRE4R
 
                         // if (health == 0 || health == 32759 || pauseStates1 > 0 || pauseStates2 == 71 || pauseStates3 == 256 || earlyGame == 0)
                         if (
-                            health == 0 || health == 32759 || 
+                            health == 0 || health == 32758 || health == 32759 ||
                         // startMenuAndLoadingScreen == 56 || 
-                        pauseStates1 > 0 || (pauseStates2 == 71 && gettingOnABoat == 55) || (pauseStates3 == 256 && gettingOnABoat == 55) || earlyGame == 0 
+                        pauseStates1 > 0 || (pauseStates2 == 71 && pauseStates3 == 0) || (pauseStates2 == 71 && gettingOnABoat == 55) || (pauseStates3 == 256 && gettingOnABoat == 55) || earlyGame == 0 
                         // || ((weaponType == 17 || weaponType == 529) && state.RotationX > 32768 && backupAmmo == -1 && hasGrenadeOrFlashbang == 0 && (flashbangAmmo == 0 || grenadeAmmo == 0)) // this will make the effect inactive when either throwable has 0 ammo, but when one is 0, the other one will switch between inactive and active during throws
                         )
                         {
@@ -652,7 +652,7 @@ namespace DualSenseRE4R
                                 // Bow effect
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 50, 50, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
-                                p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.FEEDBACK, 4, 5]; // strongest
+                                p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.FEEDBACK, 4, 4]; // strongest
 
 
                                 // }
@@ -670,7 +670,7 @@ namespace DualSenseRE4R
                                 //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                                 // }
                             }
-                            else if ((aimStateOnBoat == 6 || aimStateOnBoat == 9) && pauseStates3 == 256 && state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 && aimState2 > 0) {
+                            else if ((aimStateOnBoat == 6 || aimStateOnBoat == 9 || aimStateOnBoat == 42 || aimStateOnBoat == 33 || aimStateOnBoat == 57) && (pauseStates2 == 71 || pauseStates3 == 256) && state.RotationX > 32768 && aimState2 >= 0) {
                                 // do nothing
                             }
                             else if (
