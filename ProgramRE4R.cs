@@ -82,8 +82,8 @@ namespace DualSenseRE4R
             }
 
             Console.WriteLine("========================================");
-            Console.WriteLine(" Tomb Raider DualSense Mod v1.8.3 by Jexar");
-            Console.WriteLine(" Enhancing DualSense support for Tomb Raider");
+            Console.WriteLine(" Resident Evil 4 Remake DualSense Mod v1.0.0 by Jexar");
+            Console.WriteLine(" Enhancing DualSense support for Resident Evil 4 Remake");
             Console.WriteLine("========================================\n");
 
             string? exePath = gameProcessName[0].MainModule!.FileName;
@@ -133,7 +133,7 @@ namespace DualSenseRE4R
             Console.WriteLine($"Platform: {platform}\n");
         }
 
-        static bool IsValidMemory(string healthPointer, string hasKnifePointer, string aimStatePointer1, string gettingOnABoatPointer, string boatPointer, string pauseStatesPointer, string weaponTypePointer, Mem mem)
+        static bool IsValidMemory(string healthPointer, string knifeHealthPointer, string aimState1Pointer, string aimState2Pointer, string aimStateOnBoatPointer, string earlyGamePointer, string pauseStatesPointer, string pauseStates2Pointer, string pauseStates3Pointer, string gettingOnABoatPointer, string boatPointer, string weaponTypePointer, string backupAmmoPointer, string grenadeAmmoPointer, string flashbangAmmoPointer, string startMenuAndLoadingScreenPointer, string hasGrenadeOrFlashbangPointer, Mem mem)
         {
             try
             {
@@ -147,9 +147,28 @@ namespace DualSenseRE4R
                 // float health = mem.SafeReadFloat(healthPointer);
                 //  int ammo = mem.ReadInt(ammoPointer);
                 int health = mem.ReadInt(healthPointer);
+                float knifeHealth = mem.ReadFloat(knifeHealthPointer);
+                int aimState1 = mem.ReadInt(aimState1Pointer);
+                int aimState2 = mem.ReadInt(aimState2Pointer);
+                int aimStateOnBoat = mem.ReadInt(aimStateOnBoatPointer);
+                int earlyGame = mem.ReadInt(earlyGamePointer);
+                int pauseStates1 = mem.ReadInt(pauseStatesPointer);
+                int pauseStates2 = mem.ReadInt(pauseStates2Pointer);
+                int pauseStates3 = mem.ReadInt(pauseStates3Pointer);
+                int weaponType = mem.Read2Byte(weaponTypePointer);
+                int boat = mem.ReadInt(boatPointer);
+                int gettingOnABoat = mem.ReadInt(gettingOnABoatPointer);
+                int backupAmmo = mem.ReadInt(backupAmmoPointer);
+                int grenadeAmmo = mem.ReadInt(grenadeAmmoPointer);
+                int flashbangAmmo = mem.ReadInt(flashbangAmmoPointer);
+                int startMenuAndLoadingScreen = mem.ReadInt(startMenuAndLoadingScreenPointer);
+                int hasGrenadeOrFlashbang = mem.ReadInt(hasGrenadeOrFlashbangPointer);
                 // Console.WriteLine("Health: " + health);
-                // return health != 0;
-                return true;
+                // Console.WriteLine("Knife Health: " + knifeHealth);
+                return health != 0 
+                || knifeHealth != 0 
+                || aimState1 != 0 || aimState2 != 0 || aimStateOnBoat != 0 || earlyGame != 0 || pauseStates1 != 0 || pauseStates2 != 0 || pauseStates3 != 0 || weaponType != 0 || boat != 0 || gettingOnABoat != 0 || backupAmmo != 0 || grenadeAmmo != 0 || flashbangAmmo != 0 || startMenuAndLoadingScreen != 0 || hasGrenadeOrFlashbang != 0;
+                // return true;
             }
             catch
             {
@@ -218,15 +237,17 @@ namespace DualSenseRE4R
             // Pointer paths (replace with your actual addresses from Cheat Engine)
             // IntPtr ammoPointerBase = IntPtr.Add(baseAddress, 0x060D4AC0);
             // IntPtr ammoPointer = mem.ResolvePointer(ammoPointerBase, [0x30, 0x128, 0x40, 0x390, 0x20, 0x50, 0x4B0]);
-            string healthPointer = "re4.exe+0DA8CDD0,C8,28,48,58,210,30,44"; // Another example for float health
-            string hasKnifePointer = "re4.exe+0DA8CDD0,88,18,68,48,B0,1B8,180"; // Another example for float health
+            string healthPointer = "re4.exe+0DA8D590,20,10,138,58,210,30,44"; // Another example for float health
+            string knifeHealthPointer = "re4.exe+0DA8D2D0,50,18,28,70,48,218,14"; // Another example for float health
             // string aimState1Pointer = "re4.exe+0DC70CC8,90,30,20,1B0,28,10"; // Another example for float health
-            string aimState1Pointer = "re4.exe+0DA8D590,20,170,C0,98,B0,10,198"; // Another example for float health
-            // string aimState2Pointer = "re4.exe+0DA8D620,B8,B0,168,B0,28,108,78"; // Another example for float health
-            string aimStateOnBoatPointer = "re4.exe+0DA8CDD0,88,18,148,168,B0,50,44"; // look for this
+            // string aimState1Pointer = "re4.exe+0DA8D590,20,170,C0,98,B0,10,198"; // Another example for float health
+            string aimState1Pointer = "re4.exe+0DA96D18,40,20,180,1F8,120,160,8"; // Another example for float health
+            string aimState2Pointer = "re4.exe+0DA8D620,B8,B0,168,B0,28,108,78"; // Another example for float health
+            // string aimState2Pointer = "re4.exe+0DAA7190,B8,B0,168,B0,18,108,38"; // Another example for float health
+            string aimStateOnBoatPointer = "re4.exe+0DA8D620,B8,B0,18,98,B0,50,44"; // look for this
             string earlyGamePointer = "re4.exe+0DA8D560,178,80,30,0,D0,398,FB0"; // look for this
             string pauseStatesPointer = "re4.exe+0DA8F0B0,50,48,18,180,40,48,100"; // Another example for float health
-            string pauseStates2Pointer = "re4.exe+0DA4EEB8,A0,28,210,18,1E0,E0,5BC"; // Another example for float health
+            string pauseStates2Pointer = "re4.exe+0DA4EEB8,98,A8,210,200,230,50,4C"; // Another example for float health
             string pauseStates3Pointer = "re4.exe+0DA4E518,5B0,78,48,4B0,708,38,38"; // Another example for float health
             string weaponTypePointer = "re4.exe+0DC70CC8,90,30,20,1B0,30,B8,50"; // Another example for float health
             string boatPointer = "re4.exe+0DA8D5D8,60,78,10,C8,148,18,8"; // Another example for float health
@@ -234,6 +255,8 @@ namespace DualSenseRE4R
             string backupAmmoPointer = "re4.exe+0DA8CDD0,88,18,A0,70,B8,80,2C"; // Another example for float health
             string grenadeAmmoPointer = "re4.exe+0DA4E9A8,10,10,318,A0,38,F18,10"; // Another example for float health
             string flashbangAmmoPointer = "re4.exe+0DA62250,A8,68,1D8,70,38,ED0,6A0"; // Another example for float health
+            string startMenuAndLoadingScreenPointer = "re4.exe+0DE20BA0,68,40,E0,288,A0,1BC"; // Another example for float health
+            string hasGrenadeOrFlashbangPointer = "re4.exe+0DA8D590,C8,70,A8,A0,58,68,C4"; // Another example for float health
 
 
             // IntPtr healthPointerBase = IntPtr.Add(baseAddress, 0x060ECC20);
@@ -247,7 +270,7 @@ namespace DualSenseRE4R
 
             int controllerIndex = 0;
 
-            while (!IsValidMemory(healthPointer, hasKnifePointer, aimState1Pointer, boatPointer, gettingOnABoatPointer, pauseStatesPointer, weaponTypePointer, mem))
+            while (!IsValidMemory(healthPointer, knifeHealthPointer, aimState1Pointer, aimState2Pointer, aimStateOnBoatPointer, earlyGamePointer, pauseStatesPointer, pauseStates2Pointer, pauseStates3Pointer, gettingOnABoatPointer, boatPointer, weaponTypePointer, backupAmmoPointer, grenadeAmmoPointer, flashbangAmmoPointer, startMenuAndLoadingScreenPointer, hasGrenadeOrFlashbangPointer, mem))
             {
                 gameProcessName = Process.GetProcessesByName("re4");
 
@@ -303,6 +326,9 @@ namespace DualSenseRE4R
                 {
                     gameProcessName = Process.GetProcessesByName("re4");
 
+                    string currentPointerName = string.Empty;
+                    string currentPointerValue = string.Empty;
+
                     try
                     {
 
@@ -326,29 +352,65 @@ namespace DualSenseRE4R
                         // Read Health (float)
                         // healthPointerBase = IntPtr.Add(baseAddress, 0x060ECC20);
                         // healthPointer = mem.ResolvePointer(healthPointerBase, [0xF0, 0x20, 0xA8, 0xCF0, 0x508, 0x110, 0x10]);
+                        currentPointerName = nameof(healthPointer);
+                        currentPointerValue = healthPointer;
                         int health = mem.ReadInt(healthPointer);
                         Console.WriteLine("Health: " + health);
-                        int hasKnife = mem.ReadInt(hasKnifePointer);
+                        currentPointerName = nameof(knifeHealthPointer);
+                        currentPointerValue = knifeHealthPointer;
+                        float knifeHealth = mem.ReadFloat(knifeHealthPointer);
+                        currentPointerName = nameof(aimState1Pointer);
+                        currentPointerValue = aimState1Pointer;
                         int aimState1 = mem.ReadInt(aimState1Pointer);
-                        // int aimState2 = mem.ReadInt(aimState2Pointer);
+                        currentPointerName = nameof(aimState2Pointer);
+                        currentPointerValue = aimState2Pointer;
+                        int aimState2 = mem.ReadInt(aimState2Pointer);
+                        currentPointerName = nameof(aimStateOnBoatPointer);
+                        currentPointerValue = aimStateOnBoatPointer;
                         int aimStateOnBoat = mem.ReadInt(aimStateOnBoatPointer);
+                        currentPointerName = nameof(earlyGamePointer);
+                        currentPointerValue = earlyGamePointer;
                         int earlyGame = mem.ReadInt(earlyGamePointer);
+                        currentPointerName = nameof(pauseStatesPointer);
+                        currentPointerValue = pauseStatesPointer;
                         int pauseStates1 = mem.ReadInt(pauseStatesPointer);
+                        currentPointerName = nameof(pauseStates2Pointer);
+                        currentPointerValue = pauseStates2Pointer;
                         int pauseStates2 = mem.ReadInt(pauseStates2Pointer);
+                        currentPointerName = nameof(pauseStates3Pointer);
+                        currentPointerValue = pauseStates3Pointer;
                         int pauseStates3 = mem.ReadInt(pauseStates3Pointer);
+                        currentPointerName = nameof(weaponTypePointer);
+                        currentPointerValue = weaponTypePointer;
                         int weaponType = mem.Read2Byte(weaponTypePointer);
+                        currentPointerName = nameof(boatPointer);
+                        currentPointerValue = boatPointer;
                         int boat = mem.ReadInt(boatPointer);
+                        currentPointerName = nameof(gettingOnABoatPointer);
+                        currentPointerValue = gettingOnABoatPointer;
                         int gettingOnABoat = mem.ReadInt(gettingOnABoatPointer);
+                        currentPointerName = nameof(backupAmmoPointer);
+                        currentPointerValue = backupAmmoPointer;
                         int backupAmmo = mem.ReadInt(backupAmmoPointer);
+                        currentPointerName = nameof(grenadeAmmoPointer);
+                        currentPointerValue = grenadeAmmoPointer;
                         int grenadeAmmo = mem.ReadInt(grenadeAmmoPointer);
+                        currentPointerName = nameof(flashbangAmmoPointer);
+                        currentPointerValue = flashbangAmmoPointer;
                         int flashbangAmmo = mem.ReadInt(flashbangAmmoPointer);
+                        currentPointerName = nameof(startMenuAndLoadingScreenPointer);
+                        currentPointerValue = startMenuAndLoadingScreenPointer;
+                        int startMenuAndLoadingScreen = mem.ReadInt(startMenuAndLoadingScreenPointer);
+                        currentPointerName = nameof(hasGrenadeOrFlashbangPointer);
+                        currentPointerValue = hasGrenadeOrFlashbangPointer;
+                        int hasGrenadeOrFlashbang = mem.ReadInt(hasGrenadeOrFlashbangPointer);
 
                         Console.WriteLine("Health: " + health);
-                        Console.WriteLine("Has Knife: " + hasKnife);
+                        Console.WriteLine("Knife Health: " + knifeHealth);
                         Console.WriteLine("Aim State 1: " + aimState1);
                         Console.WriteLine("Aim State On Boat: " + aimStateOnBoat);
                         Console.WriteLine("Early Game Value: " + earlyGame);
-                        // Console.WriteLine("Aim State 2: " + aimState2);
+                        Console.WriteLine("Aim State 2: " + aimState2);
                         Console.WriteLine("Pause States: " + pauseStates1);
                         Console.WriteLine("Pause States 2: " + pauseStates2);
                         Console.WriteLine("Pause States 3: " + pauseStates3);
@@ -358,6 +420,10 @@ namespace DualSenseRE4R
                         Console.WriteLine("flashbangAmmo: " + flashbangAmmo);
                         Console.WriteLine($"L1: {buttons[4]}");
                         Console.WriteLine($"Left Trigger: {state.RotationX}");
+                        Console.WriteLine("Start Menu and Loading Screen: " + startMenuAndLoadingScreen);
+                        Console.WriteLine("Has Grenade or Flashbang: " + hasGrenadeOrFlashbang);
+                        Console.WriteLine("Boat: " + boat);
+                        Console.WriteLine("Getting On A Boat: " + gettingOnABoat);
 
 
 
@@ -374,8 +440,12 @@ namespace DualSenseRE4R
 
 
                         // if (health == 0 || health == 32759 || pauseStates1 > 0 || pauseStates2 == 71 || pauseStates3 == 256 || earlyGame == 0)
-                        if (health == 0 || health == 32759 || pauseStates1 > 0 || pauseStates2 == 71 || pauseStates3 == 256 || earlyGame == 0 || (weaponType == 17 && state.RotationX > 32768 && backupAmmo == -1 && (flashbangAmmo == 0 || grenadeAmmo == 0)))
-
+                        if (
+                            health == 0 || health == 32759 || 
+                        // startMenuAndLoadingScreen == 56 || 
+                        pauseStates1 > 0 || (pauseStates2 == 71 && gettingOnABoat == 55) || (pauseStates3 == 256 && gettingOnABoat == 55) || earlyGame == 0 
+                        // || ((weaponType == 17 || weaponType == 529) && state.RotationX > 32768 && backupAmmo == -1 && hasGrenadeOrFlashbang == 0 && (flashbangAmmo == 0 || grenadeAmmo == 0)) // this will make the effect inactive when either throwable has 0 ammo, but when one is 0, the other one will switch between inactive and active during throws
+                        )
                         {
 
                             // if (
@@ -423,7 +493,7 @@ namespace DualSenseRE4R
 
                             // if (
                             //     // weapon_type.Contains("arrow") ||
-                            //     weaponType == 17 && hasKnife == 1 && aimState == 0
+                            //     weaponType == 17 && knifeHealth == 1 && aimState == 0
                             //  //  || weaponType == 5273748904 long
                             //  )
                             // {
@@ -443,7 +513,7 @@ namespace DualSenseRE4R
 
                             // if (
                             //     // weapon_type.Contains("arrow") ||
-                            //     weaponType == 17 && hasKnife == 1 && aimState == 0
+                            //     weaponType == 17 && knifeHealth == 1 && aimState == 0
                             //  //  || weaponType == 5273748904 long
                             //  )
                             // {
@@ -486,8 +556,8 @@ namespace DualSenseRE4R
 
 
                                     // if (state.RotationX < 32768 && buttons[4] && weaponType == 15)
-                                    // if (aimState1 == 0 && buttons[4] && weaponType == 15)
-                                    if (aimStateOnBoat == 31 && weaponType == 15)
+                                    if ((aimStateOnBoat == 31 || buttons[4]) && weaponType == 15)
+                                    // if (aimStateOnBoat == 31 && weaponType == 15)
                                     {
 
                                         p.instructions[1].type = InstructionType.TriggerThreshold;
@@ -532,7 +602,7 @@ namespace DualSenseRE4R
 
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -547,14 +617,18 @@ namespace DualSenseRE4R
                             }
                             else if (
                                 // weapon_type.Contains("arrow") ||
-                                // ((hasKnife == 1 || weaponType == 11 || weaponType == 523) && ((aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0))) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (aimState1 == 0) || (aimState1 == 256 && buttons[4]) || (aimState1 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (state.RotationX < 32768) || (state.RotationX < 32768 && buttons[4]) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
-                                // (hasKnife == 1 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768)
-                                (hasKnife == 1 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768 && aimState1 >= 0 || weaponType == 11 || weaponType == 523 && buttons[4] && aimState1 == 0)
-                                // && (buttons[4] && aimState1 > 0 && aimState1 != 256 || aimState1 == 256)
-                                // aimState1 == 0 && hasKnife == 1 || aimState1 == 32 && (weaponType == 11 || weaponType == 523) || weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
+                                // ((knifeHealth == 1 || weaponType == 11 || weaponType == 523) && ((aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0))) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0) || (aimState1 == 256 && aimState2 > 0 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0) || (aimState1 == 256 && buttons[4]) || (aimState1 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (state.RotationX < 32768) || (state.RotationX < 32768 && buttons[4]) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                // (knifeHealth == 1 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768)
+                                // (knifeHealth == 1 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768 && aimState2 >= 0 || weaponType == 11 || weaponType == 523 && buttons[4] && aimState1 == 0)
+                                // (knifeHealth >= 1 && knifeHealth != 5 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768 && aimState2 >= 0 || weaponType == 11 || weaponType == 523)
+                                (
+                                    // knifeHealth > 0 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768 && aimState1 != 11 || weaponType == 11 || weaponType == 523)
+                                    knifeHealth > 0 || weaponType == 11 || weaponType == 523) && (state.RotationX < 32768 && aimState2 == 0 || weaponType == 11 || weaponType == 523)
+                                // && (buttons[4] && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0)
+                                // aimState1 == 0 && knifeHealth == 1 || aimState1 == 32 && (weaponType == 11 || weaponType == 523) || weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
 
                              //  || weaponType == 5273748904 long
                              )
@@ -582,7 +656,7 @@ namespace DualSenseRE4R
 
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // else if (weaponType == 11) 
                                 // {
                                 //     // Reset right trigger to off
@@ -596,15 +670,22 @@ namespace DualSenseRE4R
                                 //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                                 // }
                             }
+                            else if ((aimStateOnBoat == 6 || aimStateOnBoat == 9) && pauseStates3 == 256 && state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 && aimState2 > 0) {
+                                // do nothing
+                            }
                             else if (
                                 // weapon_type.Contains("arrow") ||
-                                // ((hasKnife == 1 || weaponType == 11 || weaponType == 523) && ((aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0))) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (aimState1 == 0) || (aimState1 == 256 && buttons[4]) || (aimState1 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
-                                // hasKnife >= 1 && (state.RotationX < 32768) || (state.RotationX < 32768 && buttons[4]) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
-                                    // weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
-                                    weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
-                                // aimState1 == 0 && hasKnife == 1 || aimState1 == 32 && (weaponType == 11 || weaponType == 523) || weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
+                                // ((knifeHealth == 1 || weaponType == 11 || weaponType == 523) && ((aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0))) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0) || (aimState1 == 256 && aimState2 > 0 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0) || (aimState1 == 256 && buttons[4]) || (aimState1 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (state.RotationX < 32768) || (state.RotationX < 32768 && buttons[4]) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                    // weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
+                                    // (weaponType == 143 || weaponType == 655 || (hasGrenadeOrFlashbang == 0 && flashbangAmmo > 0 && backupAmmo <= 0)) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will be inactive when both throwables have 0 ammo 
+                                    // (weaponType == 143 || weaponType == 655) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will be inactive when not holding a throwable
+                                    // (weaponType == 143 || weaponType == 655 || hasGrenadeOrFlashbang == 0) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will remain active even when ammo is at 0 for both throwables
+                                    // (weaponType == 143 || weaponType == 655 || hasGrenadeOrFlashbang == 0) && (aimState1 == 11) // will remain active even when ammo is at 0 for both throwables
+                                    (weaponType == 143 || weaponType == 655 || hasGrenadeOrFlashbang == 0) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 && aimState2 > 0) // will remain active even when ammo is at 0 for both throwables
+                                // aimState1 == 0 && knifeHealth == 1 || aimState1 == 32 && (weaponType == 11 || weaponType == 523) || weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
                              //  || weaponType == 5273748904 long
                              )
                             {
@@ -629,7 +710,58 @@ namespace DualSenseRE4R
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 50, 50, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (weaponType == 11) 
+                                // {
+                                //     // Reset right trigger to off
+                                //     p.instructions[3].type = InstructionType.TriggerUpdate;
+                                //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 50, 50, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
+                                // }
+                                // else
+                                // {
+                                //     // Reset right trigger to off
+                                //     p.instructions[3].type = InstructionType.TriggerUpdate;
+                                //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
+                                // }
+                            }
+                            else if (
+                                // weapon_type.Contains("arrow") ||
+                                // ((knifeHealth == 1 || weaponType == 11 || weaponType == 523) && ((aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0))) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0 && aimState2 == 0) || (aimState1 == 256 && aimState2 == 0) || (aimState1 == 256 && aimState2 > 0 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (aimState1 == 0) || (aimState1 == 256 && buttons[4]) || (aimState1 == 256 && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0)) // not aiming with a knife, or aiming with a knife
+                                // knifeHealth >= 1 && (state.RotationX < 32768) || (state.RotationX < 32768 && buttons[4]) || weaponType == 143  || weaponType == 655 || weaponType == 15 || weaponType == 527 // not aiming with a knife, or aiming with a knife
+                                    // weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
+                                    // (weaponType == 15 || weaponType == 527 || (hasGrenadeOrFlashbang == 0 && grenadeAmmo > 0)) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will be inactive when both throwables have 0 ammo 
+                                    // (weaponType == 15 || weaponType == 527) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will be inactive when not holding a throwable
+                                    // (weaponType == 15 || weaponType == 527 || hasGrenadeOrFlashbang == 0) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) // will remain active even when ammo is at 0 for both throwables
+                                    // (weaponType == 15 || weaponType == 527 || hasGrenadeOrFlashbang == 0) && (aimState1 == 11) // will remain active even when ammo is at 0 for both throwables
+                                    (weaponType == 15 || weaponType == 527 || hasGrenadeOrFlashbang == 0) && (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) // will remain active even when ammo is at 0 for both throwables
+                                // aimState1 == 0 && knifeHealth == 1 || aimState1 == 32 && (weaponType == 11 || weaponType == 523) || weaponType == 143 || weaponType == 655 || weaponType == 15 || weaponType == 527 || ((weaponType == 17 || weaponType == 529) && backupAmmo <= 0 && (grenadeAmmo > 0 || flashbangAmmo > 0))
+                             //  || weaponType == 5273748904 long
+                             )
+                            {
+                                // 256 is for aiming a weapon
+                                // if (aimState == 256)
+                                // {
+                                p.instructions[1].type = InstructionType.TriggerThreshold;
+                                p.instructions[1].parameters = [controllerIndex, Trigger.Right, 160];
+                                // }
+                                // else
+                                // {
+                                //     p.instructions[1].type = InstructionType.TriggerThreshold;
+                                //     p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
+                                // }
+
+                                p.instructions[2].type = InstructionType.TriggerUpdate;
+                                p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
+                                // if (aimState == 256)
+                                // {
+                                // Bow effect
+                                p.instructions[3].type = InstructionType.TriggerUpdate;
+                                p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 50, 50, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
+
+                                // }
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // else if (weaponType == 11) 
                                 // {
                                 //     // Reset right trigger to off
@@ -645,7 +777,7 @@ namespace DualSenseRE4R
                             }
                             // else if (
                             // // weapon_type.Contains("handgun") ||
-                            // // aimState1 == 256 && aimState2 == 256 // not aiming with a knife
+                            // // aimState1 == 256 && aimState2 > 0 // not aiming with a knife
                             // // aimState1 == 256 // not aiming with a knife
                             // state.RotationX > 32768
                             // // || weaponType == 4326952780 long
@@ -688,7 +820,7 @@ namespace DualSenseRE4R
                             //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 101, 158, 40, 0, 0, 0, 0]; // moderate // or 30
                             //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.WEAPON, 4, 6, 4]; // moderate
                             //                                                                                                   // }
-                            //                                                                                                   // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                            //                                                                                                   // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                             //                                                                                                   // {
                             //                                                                                                   //     // Reset right trigger to off
                             //                                                                                                   //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -703,7 +835,9 @@ namespace DualSenseRE4R
                             // }
 
                             else if (
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
+                            // (aimState1 == 11) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
                             // aimState1 == 32 && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // not aiming with a knife
                                                                                                                                                                                          // || weaponType == 4326952780 long
                             )
@@ -748,7 +882,7 @@ namespace DualSenseRE4R
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 105, 170, 105, 0, 0, 0, 0]; // Crisp trigger snap for precision shooting
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 105, 150, 45, 0, 0, 0, 0]; // Crisp trigger snap for precision shooting
                                                                                                                               // }
-                                                                                                                              // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                                                                                                              // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                                                                                                               // {
                                                                                                                               //     // Reset right trigger to off
                                                                                                                               //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -763,7 +897,9 @@ namespace DualSenseRE4R
                             }
                             else if (
                             // weapon_type.Contains("handgun") ||
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
+                            // (aimState1 == 11) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
                             // aimState1 == 32 && (weaponType == 1 || weaponType == 1025 || weaponType == 513 || weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // not aiming with a knife
                                                                                                                                                                                          // || weaponType == 4326952780 long
                             )
@@ -808,7 +944,7 @@ namespace DualSenseRE4R
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 110, 175, 120, 0, 0, 0, 0]; // Like weapon 1, slightly more intense for bioterrorism weapon
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 110, 155, 45, 0, 0, 0, 0]; // Like weapon 1, slightly more intense for bioterrorism weapon
                                                                                                                               // }
-                                                                                                                              // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                                                                                                              // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                                                                                                               // {
                                                                                                                               //     // Reset right trigger to off
                                                                                                                               //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -823,7 +959,9 @@ namespace DualSenseRE4R
                             }
 
                             else if (
-                                (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
+                                // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
+                                // (aimState1 == 11) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
+                                (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
                                 // aimState1 == 32 && (weaponType == 5 || weaponType == 517)
                             // || weaponType == 7526949996 // long
                             )
@@ -832,7 +970,7 @@ namespace DualSenseRE4R
                                 // if (aimState == 256)
                                 // {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
-                                p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
+                                p.instructions[1].parameters = [controllerIndex, Trigger.Right, 210];
                                 // }
                                 // else
                                 // {
@@ -869,7 +1007,7 @@ namespace DualSenseRE4R
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 85, 165, 40, 0, 0, 0, 0]; // Powerful rifle with weighty precision trigger
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -884,7 +1022,9 @@ namespace DualSenseRE4R
                             }
 
                             else if (
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 66 || weaponType == 578) // Skull Shaker - a shotgun with a sawed off stock and barrel
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 66 || weaponType == 578) // Skull Shaker - a shotgun with a sawed off stock and barrel
+                            // (aimState1 == 11) && (weaponType == 66 || weaponType == 578) // Skull Shaker - a shotgun with a sawed off stock and barrel
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 66 || weaponType == 578) // Skull Shaker - a shotgun with a sawed off stock and barrel
                             // aimState1 == 32 && (weaponType == 66 || weaponType == 578)
                              //  || weaponType == 7146889127 long
                              )
@@ -932,7 +1072,7 @@ namespace DualSenseRE4R
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 55, 145, 60, 0, 0, 0, 0]; // Sawed-off shotgun - heavy, violent trigger pull
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -947,7 +1087,9 @@ namespace DualSenseRE4R
                             }
                             else if (
                             // weapon_type.Contains("shotgun") ||
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 2 || weaponType == 514) // W-870 - a 12-gauge pump action shotgun
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 2 || weaponType == 514) // W-870 - a 12-gauge pump action shotgun
+                            // (aimState1 == 11) && (weaponType == 2 || weaponType == 514) // W-870 - a 12-gauge pump action shotgun
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 2 || weaponType == 514) // W-870 - a 12-gauge pump action shotgun
                             // aimState1 == 32 && (weaponType == 2 || weaponType == 514)
                              //  || weaponType == 7146889127 long
                              )
@@ -997,7 +1139,7 @@ namespace DualSenseRE4R
 
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -1011,7 +1153,9 @@ namespace DualSenseRE4R
                                 // }
                             }
                             else if (
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 3 || weaponType == 515) // TPM - a small lightweight submachine gun
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 3 || weaponType == 515) // TPM - a small lightweight submachine gun
+                            // (aimState1 == 11) && (weaponType == 3 || weaponType == 515) // TPM - a small lightweight submachine gun
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 3 || weaponType == 515) // TPM - a small lightweight submachine gun
                             // aimState1 == 32 && (weaponType == 3 || weaponType == 515)
                              //  || weaponType == 7146889127 long
                              )
@@ -1055,12 +1199,12 @@ namespace DualSenseRE4R
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 52, 136, 50, 0, 0, 0, 0]; // preferred
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 0, 9, 7, 7, 10, 0]; // moderate
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 3, 8, 9]; // moderate
-                                // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseB, 9, 110, 110]; // moderate
+                                // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseB, 9, 55, 110]; // moderate
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 4, 8, 11]; // Submachine gun - rapid fire stutter
 
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -1074,7 +1218,9 @@ namespace DualSenseRE4R
                                 // }
                             }
                             else if (
-                            (state.RotationX > 32768 && aimState1 > 0 && aimState1 != 256 || state.RotationX > 32768 && aimState1 == 0 || aimState1 == 256) && (weaponType == 9 || weaponType == 521) // bolt thrower - a weapon that shoots bolt projectiles
+                            // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 9 || weaponType == 521) // bolt thrower - a weapon that shoots bolt projectiles
+                            // (aimState1 == 11) && (weaponType == 9 || weaponType == 521) // bolt thrower - a weapon that shoots bolt projectiles
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 9 || weaponType == 521) // bolt thrower - a weapon that shoots bolt projectiles
                             // aimState1 == 32 && (weaponType == 9 || weaponType == 521)
                              //  || weaponType == 7146889127 long
                              )
@@ -1123,7 +1269,7 @@ namespace DualSenseRE4R
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 80, 170, 145, 0, 0, 0, 0]; // Bolt thrower - heavy draw, precise tension release
 
                                 // }
-                                // else if (hasKnife == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
+                                // else if (knifeHealth == 1) // if player has a knife equipped, use a different effect for the right trigger when not aiming
                                 // {
                                 //     // Reset right trigger to off
                                 //     p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -1136,13 +1282,22 @@ namespace DualSenseRE4R
                                 //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                                 // }
                             }
-                            // else if (hasKnife >= 1 && aimState1 == 0 && aimState2 == 256 && backupAmmo > -1)
-                            // else if (hasKnife == 1 && aimState1 == 0 && backupAmmo > -1)
-                            // {
-                            //     // do nothing
-                            // }
+                            // else if (knifeHealth >= 1 && aimState1 == 0 && aimState2 > 0 && backupAmmo > -1)
+                            // else if (knifeHealth == 1 && aimState1 == 0 && backupAmmo > -1)
+                            else if ((weaponType == 17 || weaponType == 529) && knifeHealth > 0 && state.RotationX > 32768)
+                            {
+                                // do nothing
+                            }
                             else
                             {
+                                 // Reset left trigger threshold to 0
+                                // p.instructions[0].type = InstructionType.TriggerThreshold;
+                                // p.instructions[0].parameters = [controllerIndex, Trigger.Left, 0];
+
+                                // Reset right trigger threshold to 0
+                                p.instructions[1].type = InstructionType.TriggerThreshold;
+                                p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
+
                                 // Reset right trigger to off
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
                                 p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
@@ -1154,9 +1309,14 @@ namespace DualSenseRE4R
                     }
                     catch (OverflowException ex)
                     {
-                        Console.WriteLine("Memory pointer invalid after save reload: " + ex.Message);
+                        Console.WriteLine($"Memory pointer invalid after save reload while reading {currentPointerName}: {ex.Message}");
+                        Console.WriteLine($"Pointer name: {currentPointerName}");
+                        Console.WriteLine($"Pointer address string: {currentPointerValue}");
+                        Console.WriteLine(ex.ToString());
                         Console.WriteLine("Please restart the mod after loading a save.");
-                        Environment.Exit(1);
+                        Console.WriteLine("Continuing to run and retrying on the next loop iteration.");
+                        Thread.Sleep(100);
+                        continue;
                     }
 
                     // Player number
