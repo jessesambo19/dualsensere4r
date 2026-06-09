@@ -149,3 +149,10 @@
    at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
    at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
    at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseRE4R\ProgramRE4R copy 3.cs:line 338
+[2026-05-29 07:21:06] Unexpected error: [Loop Crash] HRESULT: [0x8007001E], Module: [SharpDX.DirectInput], ApiCode: [DIERR_INPUTLOST/InputLost], Message: The system cannot read from the specified device.
+
+   at SharpDX.Result.CheckError()
+   at SharpDX.DirectInput.Device.GetDeviceState(Int32 arg0, IntPtr arg1)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState(T& data)
+   at SharpDX.DirectInput.CustomDevice`3.GetCurrentState()
+   at DualSenseRE4R.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseRE4R\ProgramRE4R.cs:line 338

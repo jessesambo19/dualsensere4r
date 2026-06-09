@@ -100,12 +100,12 @@ namespace DualSenseRE4R
             var gogInfoFile = Directory.GetFiles(exeDirectory, "goggame-*.info");
             var gogFiles = Directory.GetFiles(exeDirectory, "goggame-*.*");
 
-            if (File.Exists(Path.Combine(exeDirectory, "steam_api.dll")))
+            if (File.Exists(Path.Combine(exeDirectory, "steam_api64.dll")))
             {
                 platform = "Steam";
             }
             else if (File.Exists(Path.Combine(exeDirectory, "EOSSDK-Win32-Shipping.dll"))
-                     && !File.Exists(Path.Combine(exeDirectory, "steam_api.dll"))
+                     && !File.Exists(Path.Combine(exeDirectory, "steam_api64.dll"))
                      && !File.Exists(Path.Combine(exeDirectory, "Galaxy.dll"))
                      && gogInfoFile.Length == 0
                      && gogFiles.Length == 0
@@ -245,18 +245,18 @@ namespace DualSenseRE4R
             string aimState2Pointer = "re4.exe+0DA8D620,B8,B0,168,B0,28,108,78"; // Another example for float health
             // string aimState2Pointer = "re4.exe+0DAA7190,B8,B0,168,B0,18,108,38"; // Another example for float health
             string aimStateOnBoatPointer = "re4.exe+0DA8D620,B8,B0,18,98,B0,50,44"; // look for this
-            string earlyGamePointer = "re4.exe+0DA8D560,178,80,30,0,D0,398,FB0"; // look for this
+            string earlyGamePointer = "re4.exe+0DA8D558,198,80,30,448,80,480,6A0"; // look for this
             string pauseStatesPointer = "re4.exe+0DA8F0B0,50,48,18,180,40,48,100"; // Another example for float health
             string pauseStates2Pointer = "re4.exe+0DA4EEB8,98,A8,210,200,230,50,4C"; // Another example for float health
             string pauseStates3Pointer = "re4.exe+0DA4E518,5B0,78,48,4B0,708,38,38"; // Another example for float health
-            string weaponTypePointer = "re4.exe+0DC70CC8,60,40,D0,30,20,1A8,50"; // change // Another example for float health
+            string weaponTypePointer = "re4.exe+0DC70CC8,90,30,20,1B0,30,B8,50"; // change // Another example for float health
             string boatPointer = "re4.exe+0DA8D5D8,60,78,10,C8,148,18,8"; // Another example for float health
-            string gettingOnABoatPointer = "re4.exe+0DA8F0D8,210,1A8,440,130,60,68,DB8"; // Another example for float health
+            string gettingOnABoatPointer = "re4.exe+0DA8F0D8,B8,98,58,18,78,190,18"; // Another example for float health
             string backupAmmoPointer = "re4.exe+0DA8D590,88,78,A0,70,C0,40,2C"; // Another example for float health
             string grenadeAmmoPointer = "re4.exe+0DA4E9A8,10,10,318,A0,38,F18,10"; // Another example for float health
             string flashbangAmmoPointer = "re4.exe+0DA62250,A8,68,1D8,70,38,ED0,6A0"; // Another example for float health
             string startMenuAndLoadingScreenPointer = "re4.exe+0DE20BA0,68,40,E0,288,A0,1BC"; // Another example for float health
-            string hasGrenadeOrFlashbangPointer = "re4.exe+0DA8D590,C8,70,A8,A0,58,68,C4"; // Another example for float health
+            string hasGrenadeOrFlashbangPointer = "re4.exe+0DA8D590,C0,130,A8,A0,58,68,C4"; // Another example for float health
 
 
             // IntPtr healthPointerBase = IntPtr.Add(baseAddress, 0x060ECC20);
@@ -837,7 +837,7 @@ namespace DualSenseRE4R
                             else if (
                             // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
                             // (aimState1 == 11) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
-                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // SG-09 R - a custom handgun made for Leon
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 1 || weaponType == 1025 || weaponType == 513 || weaponType == 1537) // SG-09 R - a custom handgun made for Leon
                             // aimState1 == 32 && (weaponType == 1 || weaponType == 1025 || weaponType == 513) // not aiming with a knife
                                                                                                                                                                                          // || weaponType == 4326952780 long
                             )
@@ -899,7 +899,7 @@ namespace DualSenseRE4R
                             // weapon_type.Contains("handgun") ||
                             // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
                             // (aimState1 == 11) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
-                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
+                            (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 12289 || weaponType == 13313 || weaponType == 12801 || weaponType == 13825) // Sentinel Nine - a fully customized handgun for tackling bioterrorism
                             // aimState1 == 32 && (weaponType == 1 || weaponType == 1025 || weaponType == 513 || weaponType == 12289 || weaponType == 13313 || weaponType == 12801) // not aiming with a knife
                                                                                                                                                                                          // || weaponType == 4326952780 long
                             )
@@ -961,7 +961,7 @@ namespace DualSenseRE4R
                             else if (
                                 // (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 || aimState2 > 0) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
                                 // (aimState1 == 11) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
-                                (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 5 || weaponType == 517) // SR M193 - a bolt action rifle with a scope
+                                (state.RotationX > 32768 && aimState2 >= 0 && aimState2 == 0 ||aimState2 > 0) && (weaponType == 5 || weaponType == 517 || weaponType == 69 || weaponType == 581) // SR M193 - a bolt action rifle with a scope
                                 // aimState1 == 32 && (weaponType == 5 || weaponType == 517)
                             // || weaponType == 7526949996 // long
                             )
